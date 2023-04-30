@@ -2,7 +2,9 @@ const express = require("express");
 const { connection } = require("./config/db");
 const { UserModel } = require("./models/userModel");
 const app = express();
+require("dotenv").config();
 
+const port = process.env.PORT || 7000;
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -14,7 +16,7 @@ app.get("/data", async (req, res) => {
   res.send(data);
 });
 
-app.listen(7000, async () => {
+app.listen(port, async () => {
   try {
     await connection;
     console.log("Connecting to to db successfull");
