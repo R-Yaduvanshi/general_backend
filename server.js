@@ -2,11 +2,12 @@ const express = require("express");
 const { connection } = require("./config/db");
 const { UserModel } = require("./models/userModel");
 const app = express();
+const cors = require("cors");
 require("dotenv").config();
 
 const port = process.env.PORT || 7000;
 app.use(express.json());
-
+app.use(cors());
 app.get("/", (req, res) => {
   res.send("Hello from new backend");
 });
